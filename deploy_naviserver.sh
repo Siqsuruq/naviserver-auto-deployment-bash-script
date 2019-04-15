@@ -1,14 +1,19 @@
 #!/bin/bash
 
+ns_dir="/opt/ns"
+pg_pass="P.0stgr35#"
+echo "Naviserver install dir: " $ns_dir
+
 apt-get update
 yes | apt-get install unzip tcl tcl-dev tk tk-dev tcllib tdom libssl-dev libpq-dev automake postgresql postgresql-contrib
 
 
-sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'P.0stgr35#';"
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$ps_pass';"
 
 mkdir ns_install
 cd ns_install
-wget https://bitbucket.org/naviserver/naviserver/get/45f90be2b7d5.zip
+# wget https://bitbucket.org/naviserver/naviserver/get/naviserver-4.99.18.zip
+wget https://bitbucket.org/naviserver/naviserver/get/tip.zip
 unzip *zip
 cd naviserver-naviserver*
 ./autogen.sh --prefix=/opt/ns --enable-symbols --enable-threads
