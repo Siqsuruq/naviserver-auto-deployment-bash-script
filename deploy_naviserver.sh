@@ -16,13 +16,13 @@ cd ns_install
 wget https://bitbucket.org/naviserver/naviserver/get/tip.zip
 unzip *zip
 cd naviserver-naviserver*
-./autogen.sh --prefix=/opt/ns --enable-symbols --enable-threads
+./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads
 make
 make install
 useradd nsadmin
-chown -R nsadmin:nsadmin /opt/ns/logs
-chown -R nsadmin:nsadmin /opt/ns/pages
-/opt/ns/bin/nsd -u nsadmin -t /opt/ns/conf/nsd-config.tcl -f
+chown -R nsadmin:nsadmin $ns_dir/logs
+chown -R nsadmin:nsadmin $ns_dir/pages
+$ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
 
 
