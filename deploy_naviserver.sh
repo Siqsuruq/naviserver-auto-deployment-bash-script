@@ -38,6 +38,10 @@ unzip *zip
 cd naviserver-nsdbpg*
 make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
 make install
+cd ..
+rm -R ./naviserver-nsdbpg*
+rm -R *.zip
+
 echo "---------------------- Starting Naviserver ---------------------- "
 $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
