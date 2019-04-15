@@ -1,11 +1,14 @@
 #!/bin/bash
 
 ns_dir="/opt/ns"
+pg_incl=/usr/include/postgresql
+pg_lib=/usr/lib
+pg_user=postgres
 pg_pass="P.0stgr35#"
 echo "Naviserver install dir: " $ns_dir
 
 apt-get update
-yes | apt-get install unzip tcl tcl-dev tk tk-dev tcllib tdom libssl-dev libpq-dev automake postgresql postgresql-contrib
+yes | apt-get install unzip tcl tcl-dev tcllib tdom libssl-dev libpq-dev automake postgresql postgresql-contrib
 
 
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$ps_pass';"
@@ -22,9 +25,19 @@ make install
 useradd nsadmin
 chown -R nsadmin:nsadmin $ns_dir/logs
 chown -R nsadmin:nsadmin $ns_dir/pages
+
+echo "---------------------- Done installing Naviserver ---------------------"
+echo "Cleaning:"
+cd ..
+rm -R ./naviserver-naviserver*
+rm -R *.zip
+
+echo "---------------------- Download and install nsdbpg ---------------------- "
+wget https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
+unzip *zip
+cd naviserver-nsdbpg*
+make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
+make install
+echo "---------------------- Starting Naviserver ---------------------- "
 $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
-
-
-make PGINCLUDE=/usr/include/postgresql/
-P.0stgr35#
