@@ -1,0 +1,16 @@
+[Unit]
+
+Description=NAVISERVER
+After=network.target
+
+[Service]
+
+Type=forking
+PIDFile=/opt/ns/logs/nsd.pid
+ExecStart=/etc/init.d/naviserver start
+ExecReload=/etc/init.d/naviserver restart
+ExecStop=/etc/init.d/naviserver stop
+
+[Install]
+
+WantedBy=multi-user.target

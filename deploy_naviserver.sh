@@ -43,5 +43,14 @@ rm -R ./naviserver-nsdbpg*
 rm -R *.zip
 
 echo "---------------------- Starting Naviserver ---------------------- "
-$ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
+# $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
+
+cp ./naviserver.service /etc/systemd/system/
+cp ./naviserver /etc/init.d/ 
+chmod a+x /etc/init.d/naviserver
+cp $ns_dir/conf/nsd-config.tcl $ns_dir/conf/nsd.conf
+
+systemctl daemon-reload
+systemctl enable naviserver.service
+service naviserver start

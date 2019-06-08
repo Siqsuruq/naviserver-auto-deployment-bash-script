@@ -1,0 +1,39 @@
+#!/bin/sh
+# /etc/rc.d/rc.naviserver
+# start/stop/restart
+# the NaviServer (nsd) web server.
+
+# To make Naviserver start automatically at boot, make this
+# file executable: chmod 755 /etc/rc.d/rc.naviserver
+
+### BEGIN INIT INFO
+# Provides:          naviserver
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Naviserver
+### END INIT INFO
+
+INSTALL_DIR=/opt/ns
+CONFIG_FILE_NAME=nsd.conf
+PID_FILE=/opt/ns/logs/nsd.pid
+
+case "$1" in
+'start')
+echo "Starting Naviserver in background mode"
+$INSTALL_DIR/bin/nsd -u nsadmin -t $INSTALL_DIR/conf/$CONFIG_FILE_NAME -b 0.0.0.0:80,0.0.0.0:443
+;;
+'stop')
+echo "Killing all Naviservers"
+kill -9 $(cat $PID_FILE)
+;;
+'restart')
+echo "Killing all Naviservers and starting Naviserver in background mode"
+killall nsd
+$INSTALL_DIR/bin/nsd -u nsadmin -t $INSTALL_DIR/conf/$CONFIG_FILE_NAME -b 0.0.0.0:80,0.0.0.0:443
+;;
+*)
+echo "Usage: $0 {start|stop|restart}"
+;;
+esac
