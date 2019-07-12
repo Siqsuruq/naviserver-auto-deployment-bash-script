@@ -7,8 +7,9 @@ pg_user=postgres
 
 echo "Naviserver install dir: " $ns_dir
 
+export DEBIAN_FRONTEND=noninteractive
 apt-get update
-yes | apt-get install unzip tcl tcl-dev tcllib tdom libssl-dev libpq-dev automake postgresql postgresql-contrib
+apt-get -y install unzip tcl tcl-dev tcllib tdom libssl-dev libpq-dev automake postgresql postgresql-contrib nsf nsf-shells fortune mc
 
 
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'P.0stgr35#';"
@@ -28,7 +29,7 @@ chown -R nsadmin:nsadmin $ns_dir/pages
 
 echo "---------------------- Done installing Naviserver ---------------------"
 echo "Cleaning:"
-cd ..
+cd ../
 rm -R ./naviserver-naviserver*
 rm -R *.zip
 
@@ -38,10 +39,10 @@ unzip *zip
 cd naviserver-nsdbpg*
 make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
 make install
-cd ..
+cd ../
 rm -R ./naviserver-nsdbpg*
 rm -R *.zip
-
+cd ../
 echo "---------------------- Starting Naviserver ---------------------- "
 # $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
