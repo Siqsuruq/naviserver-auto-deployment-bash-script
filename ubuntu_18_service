@@ -1,8 +1,0 @@
-cp ./naviserver.service /etc/systemd/system/
-cp ./naviserver /etc/init.d/ 
-chmod a+x /etc/init.d/naviserver
-cp /opt/ns/conf/nsd-config.tcl /opt/ns/conf/nsd.conf
-
-systemctl daemon-reload
-systemctl enable naviserver.service
-service naviserver start
