@@ -24,7 +24,7 @@ function update_ubuntu () {
 
 function set_pg_pass () {
 	echo -e "${BL}------------------ Setting up postgres password: ------------------{NC}"
-	sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD $1;"
+	sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$1';"
 	echo -e "${GR}------------------ Done$ ------------------{NC}"
 }
 
