@@ -33,7 +33,7 @@ function install_ns_module () {
 	mkdir nsm_install
 	cd nsm_install
 	wget @1
-	unzip *zip
+	unzip *.zip
 	cd naviserver-*
 	make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
 	make NAVISERVER=$ns_dir install
