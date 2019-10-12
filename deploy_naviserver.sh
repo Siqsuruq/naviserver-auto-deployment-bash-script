@@ -18,7 +18,7 @@ function update_ubuntu () {
 	echo -e "${BL}------------------ Updating Ubuntu: ------------------{NC}"
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get update
-	apt-get -y install unzip tcl tcl-dev tcllib tdom tcl-tls libssl-dev libpng-dev libpq-dev automake postgresql postgresql-contrib nsf nsf-shells fortune mc file
+	apt-get -y install unzip tcl tcl-dev tcllib tdom tcl-tls libssl-dev libpng-dev libpq-dev automake postgresql postgresql-contrib nsf nsf-shells fortune mc file git
 	echo -e "${GR}------------------ Done$ ------------------{NC}"
 }
 
