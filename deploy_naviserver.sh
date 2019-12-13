@@ -73,7 +73,7 @@ install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 # unzip *zip
 # cd naviserver-nsdbpg*
 # make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
-# make NAVISERVER=$ns_dir install
+# make install NAVISERVER=$ns_dir
 # cd ../
 # rm -R ./naviserver-nsdbpg*
 # rm -R *.zip
