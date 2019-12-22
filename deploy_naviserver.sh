@@ -48,7 +48,7 @@ function install_ns_module () {
 
 # set_pg_pass $pg_pass
 
-# Start from here
+# Start from here,just ns
 mkdir ns_install
 cd ns_install
 wget https://bitbucket.org/naviserver/naviserver/get/tip.zip
@@ -78,16 +78,16 @@ install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 # rm -R ./naviserver-nsdbpg*
 # rm -R *.zip
 # cd ../
-install_ns_module https://bitbucket.org/naviserver/nsfortune/get/tip.zip
-echo "---------------------- Starting Naviserver ---------------------- "
+# # install_ns_module https://bitbucket.org/naviserver/nsfortune/get/tip.zip
+# echo "---------------------- Starting Naviserver ---------------------- "
 # $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
 
-cp ./naviserver.service /etc/systemd/system/
-cp ./naviserver /etc/init.d/ 
-chmod a+x /etc/init.d/naviserver
-cp $ns_dir/conf/nsd-config.tcl $ns_dir/conf/nsd.conf
+# cp ./naviserver.service /etc/systemd/system/
+# cp ./naviserver /etc/init.d/ 
+# chmod a+x /etc/init.d/naviserver
+# cp $ns_dir/conf/nsd-config.tcl $ns_dir/conf/nsd.conf
 
-systemctl daemon-reload
-systemctl enable naviserver.service
-service naviserver start
+# systemctl daemon-reload
+# systemctl enable naviserver.service
+# service naviserver start
