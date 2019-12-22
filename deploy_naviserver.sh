@@ -44,31 +44,35 @@ function install_ns_module () {
 	echo -e "${GR}------------------ Done$ ------------------{NC}"
 }
 
+function install_ns () {
+	echo -e "${RED} ------------------ Installing Naviserver: ------------------ ${NC}"
+	mkdir ns_install
+	cd ns_install
+	wget https://bitbucket.org/naviserver/naviserver/get/tip.zip
+	unzip *zip
+	cd naviserver-naviserver*
+	./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads
+	make
+	make install
+	useradd nsadmin
+	chown -R nsadmin:nsadmin $ns_dir/logs
+	chown -R nsadmin:nsadmin $ns_dir/pages
+	echo "-------------------------------------------"
+	echo "Cleaning:"
+	cd ../
+	rm -R ./naviserver-naviserver*
+	rm -R *.zip
+	echo -e "${GR} ------------------ Done installing Naviserver ------------------ ${NC}"
+}
 # update_ubuntu
 
 # set_pg_pass $pg_pass
 
 # Start from here,just ns
-mkdir ns_install
-cd ns_install
-wget https://bitbucket.org/naviserver/naviserver/get/tip.zip
-unzip *zip
-cd naviserver-naviserver*
-./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads
-make
-make install
-useradd nsadmin
-chown -R nsadmin:nsadmin $ns_dir/logs
-chown -R nsadmin:nsadmin $ns_dir/pages
-
-echo "---------------------- Done installing Naviserver ---------------------"
-echo "Cleaning:"
-cd ../
-rm -R ./naviserver-naviserver*
-rm -R *.zip
+install_ns
 
 echo "---------------------- Download and install nsdbpg ---------------------- "
-install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
+# install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 # wget https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 # unzip *zip
 # cd naviserver-nsdbpg*
