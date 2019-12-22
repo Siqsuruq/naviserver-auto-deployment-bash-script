@@ -8,3 +8,10 @@ wget https://github.com/Siqsuruq/naviserver-auto-deployment-bash-script/raw/mast
 chmod a+x deploy_naviserver.sh
 ./deploy_naviserver.sh
 ```
+It will download and install latest naviserver from source code, also naviserver modules NSDBPG and NSFORTUNE.
+For fresh instalation you will need a lot of other software, just uncomment line 
+```
+# update_ubuntu
+```
+
+Enjoy
