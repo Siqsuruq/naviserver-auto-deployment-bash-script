@@ -69,6 +69,8 @@ function ns_startup () {
 	cp ./naviserver /etc/init.d/
 	cp ./naviserver.service /etc/systemd/system/
 	chmod a+x /etc/init.d/naviserver
+	cd ../
+	rm -R ./ns_install
 	
 	cp $ns_dir/conf/nsd-config.tcl $ns_dir/conf/nsd.conf
 	echo -e "${RED} ---------------------- Starting Naviserver ---------------------- ${NC}"
@@ -78,23 +80,8 @@ function ns_startup () {
 }
 # update_ubuntu
 
-# set_pg_pass $pg_pass
-
 # Start from here,just ns
 install_ns
 install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip NS_DBPG
 install_ns_module https://bitbucket.org/naviserver/nsfortune/get/tip.zip NS_FORTUNE
 ns_startup
-
-# 
-# $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
-
-
-# cp ./naviserver.service /etc/systemd/system/
-# cp ./naviserver /etc/init.d/ 
-# chmod a+x /etc/init.d/naviserver
-# cp $ns_dir/conf/nsd-config.tcl $ns_dir/conf/nsd.conf
-
-# systemctl daemon-reload
-# systemctl enable naviserver.service
-# service naviserver start

@@ -22,7 +22,7 @@ PID_FILE=/opt/ns/logs/nsd.pid
 case "$1" in
 'start')
 echo "Starting Naviserver in background mode"
-$INSTALL_DIR/bin/nsd -u nsadmin -t $INSTALL_DIR/conf/$CONFIG_FILE_NAME -b 0.0.0.0:80,0.0.0.0:443
+$INSTALL_DIR/bin/nsd -w -u nsadmin -t $INSTALL_DIR/conf/$CONFIG_FILE_NAME -b 0.0.0.0:80,0.0.0.0:443
 ;;
 'stop')
 echo "Killing all Naviservers"
