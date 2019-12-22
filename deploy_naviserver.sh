@@ -29,7 +29,7 @@ function set_pg_pass () {
 }
 
 function install_ns_module () {
-	echo -e "${BL}------------------ Installing Naviserver Module: ------------------ ${NC}"
+	echo -e "${BL}------------------ Installing Naviserver Module: $2 ------------------ ${NC}"
 	mkdir nsm_install
 	cd nsm_install
 	wget $1
@@ -41,7 +41,9 @@ function install_ns_module () {
 	rm -R ./naviserver-*
 	rm -R *.zip
 	cd ../
-	echo -e "${GR}------------------ Done$ ------------------{NC}"
+	cd ../
+	rm -R ./nsm_install
+	echo -e "${BL}------------------ Done ------------------ ${NC}"
 }
 
 function install_ns () {
@@ -64,7 +66,7 @@ function install_ns () {
 	rm -R *.zip
 	cd ../
 	rm -R ./ns_install
-	echo -e "${GR} ------------------ Done installing Naviserver ------------------ ${NC}"
+	echo -e "${RED} ------------------ Done installing Naviserver ------------------ ${NC}"
 }
 
 
@@ -74,18 +76,10 @@ function install_ns () {
 
 # Start from here,just ns
 install_ns
-install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
+install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip NS_DBPG
+install_ns_module https://bitbucket.org/naviserver/nsfortune/get/tip.zip NS_FORTUNE
 
-# wget https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
-# unzip *zip
-# cd naviserver-nsdbpg*
-# make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
-# make install NAVISERVER=$ns_dir
-# cd ../
-# rm -R ./naviserver-nsdbpg*
-# rm -R *.zip
-# cd ../
-# # install_ns_module https://bitbucket.org/naviserver/nsfortune/get/tip.zip
+
 # echo "---------------------- Starting Naviserver ---------------------- "
 # $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
