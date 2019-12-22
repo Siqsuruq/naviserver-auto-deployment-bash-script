@@ -32,7 +32,7 @@ function install_ns_module () {
 	echo -e "${BL}------------------ Installing Naviserver Module: ------------------ ${NC}"
 	mkdir nsm_install
 	cd nsm_install
-	wget @1
+	wget $1
 	unzip *.zip
 	cd naviserver-*
 	make NAVISERVER=$ns_dir PGINCLUDE=$pg_incl
