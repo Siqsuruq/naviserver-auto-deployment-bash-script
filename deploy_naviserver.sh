@@ -10,8 +10,6 @@ NC='\033[0m' # No Color
 ns_dir="/opt/ns"
 pg_incl=/usr/include/postgresql
 pg_lib=/usr/lib
-pg_user=postgres
-pg_pass='P.0stgr35#'
 echo "Naviserver install dir: " $ns_dir
 
 function update_ubuntu () {
@@ -19,12 +17,6 @@ function update_ubuntu () {
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get update
 	apt-get -y install unzip tcl tcl-dev tcllib tdom tcl-tls libssl-dev libpng-dev libpq-dev automake postgresql postgresql-contrib nsf nsf-shells fortune mc file git
-	echo -e "${GR}------------------ Done$ ------------------{NC}"
-}
-
-function set_pg_pass () {
-	echo -e "${BL}------------------ Setting up postgres password: ------------------{NC}"
-	sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$1';"
 	echo -e "${GR}------------------ Done$ ------------------{NC}"
 }
 
@@ -68,7 +60,22 @@ function install_ns () {
 	echo -e "${RED} ------------------ Done installing Naviserver ------------------ ${NC}"
 }
 
-
+function ns_startup () {
+	echo -e "${RED} ------------------ Installing Naviserver StartUp Scripts: ------------------ ${NC}"
+	mkdir ns_install
+	cd ns_install
+	wget https://github.com/Siqsuruq/naviserver-auto-deployment-bash-script/raw/master/naviserver
+	wget https://github.com/Siqsuruq/naviserver-auto-deployment-bash-script/raw/master/naviserver.service
+	cp ./naviserver /etc/init.d/
+	cp ./naviserver.service /etc/systemd/system/
+	chmod a+x /etc/init.d/naviserver
+	
+	cp $ns_dir/conf/nsd-config.tcl $ns_dir/conf/nsd.conf
+	echo -e "${RED} ---------------------- Starting Naviserver ---------------------- ${NC}"
+	systemctl daemon-reload
+	systemctl enable naviserver.service
+	service naviserver start
+}
 # update_ubuntu
 
 # set_pg_pass $pg_pass
@@ -77,9 +84,9 @@ function install_ns () {
 install_ns
 install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip NS_DBPG
 install_ns_module https://bitbucket.org/naviserver/nsfortune/get/tip.zip NS_FORTUNE
+ns_startup
 
-
-# echo "---------------------- Starting Naviserver ---------------------- "
+# 
 # $ns_dir/bin/nsd -u nsadmin -t $ns_dir/conf/nsd-config.tcl -f
 
 
