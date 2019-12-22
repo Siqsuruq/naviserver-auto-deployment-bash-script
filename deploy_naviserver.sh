@@ -29,7 +29,7 @@ function set_pg_pass () {
 }
 
 function install_ns_module () {
-	echo -e "${BL}------------------ Installing Naviserver Module: ------------------{NC}"
+	echo -e "${BL}------------------ Installing Naviserver Module: ------------------ ${NC}"
 	mkdir nsm_install
 	cd nsm_install
 	wget @1
@@ -62,17 +62,20 @@ function install_ns () {
 	cd ../
 	rm -R ./naviserver-naviserver*
 	rm -R *.zip
+	cd ../
+	rm -R ./ns_install
 	echo -e "${GR} ------------------ Done installing Naviserver ------------------ ${NC}"
 }
+
+
 # update_ubuntu
 
 # set_pg_pass $pg_pass
 
 # Start from here,just ns
 install_ns
+install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 
-echo "---------------------- Download and install nsdbpg ---------------------- "
-# install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 # wget https://bitbucket.org/naviserver/nsdbpg/get/tip.zip
 # unzip *zip
 # cd naviserver-nsdbpg*
