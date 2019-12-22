@@ -44,11 +44,11 @@ function install_ns_module () {
 	echo -e "${GR}------------------ Done$ ------------------{NC}"
 }
 
-update_ubuntu
+# update_ubuntu
 
-set_pg_pass $pg_pass
+# set_pg_pass $pg_pass
 
-
+# Start from here
 mkdir ns_install
 cd ns_install
 wget https://bitbucket.org/naviserver/naviserver/get/tip.zip
