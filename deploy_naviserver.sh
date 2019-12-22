@@ -41,7 +41,6 @@ function install_ns_module () {
 	rm -R ./naviserver-*
 	rm -R *.zip
 	cd ../
-	cd ../
 	rm -R ./nsm_install
 	echo -e "${BL}------------------ Done ------------------ ${NC}"
 }
