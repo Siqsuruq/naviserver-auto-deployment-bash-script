@@ -41,7 +41,7 @@ function install_ns () {
 	echo -e "${RED} ------------------ Installing Naviserver: ------------------ ${NC}"
 	mkdir ns_install
 	cd ns_install
-	wget https://bitbucket.org/naviserver/naviserver-hg/get/tip.zip
+	wget https://bitbucket.org/naviserver/naviserver/get/master.zip
 	unzip *zip
 	cd naviserver-naviserver*
 	./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads
@@ -82,6 +82,6 @@ function ns_startup () {
 
 # Start from here,just ns
 install_ns
-install_ns_module https://bitbucket.org/naviserver/nsdbpg-hg/get/tip.zip NS_DBPG
-install_ns_module https://bitbucket.org/naviserver/nsfortune-hg/get/tip.zip NS_FORTUNE
-ns_startup
+# install_ns_module https://bitbucket.org/naviserver/nsdbpg/get/master.zip NS_DBPG
+# install_ns_module https://bitbucket.org/naviserver/nsfortune/get/master.zip NS_FORTUNE
+# ns_startup
