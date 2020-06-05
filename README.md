@@ -5,7 +5,7 @@ I have tested it on Ubuntu 18.xx , but it should work on other systems as well.
 Bascic usage as root, from terminal:
 ```
 wget https://github.com/Siqsuruq/naviserver-auto-deployment-bash-script/raw/master/deploy_ns.sh
-chmod a+x deploy_naviserver.sh
+chmod a+x deploy_ns.sh
 ./deploy_naviserver.sh -i -u -d /opt/ns -s -m NS_DBPG
 ```
 Usage: deploy_ns.sh [-u] [-d NS Install Dir] -i
