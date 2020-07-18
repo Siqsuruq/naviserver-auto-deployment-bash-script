@@ -93,7 +93,7 @@ function install_ns () {
 	wget https://bitbucket.org/naviserver/naviserver/get/master.zip
 	unzip *zip
 	cd naviserver-naviserver*
-	./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads
+	./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads --htmldir=$ns_dir/doc
 	make
 	make install
 	useradd nsadmin

@@ -31,7 +31,7 @@ kill -9 $(cat $PID_FILE)
 'restart')
 echo "Killing all Naviservers and starting Naviserver in background mode"
 killall nsd
-$INSTALL_DIR/bin/nsd -u nsadmin -t $INSTALL_DIR/conf/$CONFIG_FILE_NAME -b 0.0.0.0:80,0.0.0.0:443
+$INSTALL_DIR/bin/nsd -w -u nsadmin -t $INSTALL_DIR/conf/$CONFIG_FILE_NAME -b 0.0.0.0:80,0.0.0.0:443
 ;;
 *)
 echo "Usage: $0 {start|stop|restart}"
