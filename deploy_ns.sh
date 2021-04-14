@@ -18,6 +18,7 @@ ns_module=""
 declare -A ns_modules
 ns_modules[NS_DBPG]=https://bitbucket.org/naviserver/nsdbpg/get/master.zip
 ns_modules[NS_DBI]=https://bitbucket.org/naviserver/nsdbi/get/master.zip
+ns_modules[NS_DBIPG]=https://bitbucket.org/naviserver/nsdbipg/get/master.zip
 ns_modules[NS_FORTUNE]=https://bitbucket.org/naviserver/nsfortune/get/master.zip
 
 # Usage info
