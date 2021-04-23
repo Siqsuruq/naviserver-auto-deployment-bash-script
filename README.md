@@ -16,7 +16,7 @@ Options:
         -d              Change Naviserver install directory (Default: /opt/ns)
         -u              Will run 'apt-get update' first and install all Ubuntu packages dependencies
         -s              Install StartUp Scripts
-        -m              Install NS Module (NS_DBPG NS_FORTUNE)
+        -m              Install NS Module (NS_DBPG NS_FORTUNE NS_DBI NS_DBIPG)
         -h              Show this Help
 
 It will download and install latest naviserver from source code.
