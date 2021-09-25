@@ -14,6 +14,7 @@ install_start=no
 pg_incl=/usr/include/postgresql
 pg_lib=/usr/lib
 ns_module=""
+ns_build=master
 
 declare -A ns_modules
 ns_modules[NS_DBPG]=https://bitbucket.org/naviserver/nsdbpg/get/master.zip
@@ -29,6 +30,7 @@ echo -e "${BL}
 	
 	-i		Install Naviserver
 	-d		Change Naviserver install directory (Default: /opt/ns)
+	-b		Install specific Naviserver Bitbucket Repo commit
 	-u		Will run 'apt-get update' first and install all Ubuntu packages dependencies
 	-s		Install StartUp Scripts
 	-m		Install NS Module (NS_DBPG NS_FORTUNE NS_DBI NS_DBIPG)
@@ -92,7 +94,7 @@ function install_ns () {
 	echo -e "${RED} ------------------ Installing Naviserver: ------------------ ${NC}"
 	mkdir ns_install
 	cd ns_install
-	wget https://bitbucket.org/naviserver/naviserver/get/master.zip
+	wget https://bitbucket.org/naviserver/naviserver/get/$ns_build.zip
 	unzip *zip
 	cd naviserver-naviserver*
 	./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads --htmldir=$ns_dir/doc
@@ -129,13 +131,14 @@ function install_ns_module () {
 	echo -e "${BL}------------------ Done ------------------ ${NC}"
 }
 
-while getopts "d:m:uish" opt; do
+while getopts "d:m:b:uish" opt; do
 	case $opt in
 		d) ns_dir="$OPTARG";;
 		u) run_apt=yes ;;
 		i) install_ns=yes ;;
 		s) install_start=yes ;;
 		m) ns_module="$OPTARG";;
+		b) ns_build="$OPTARG";;
 		h) show_help ;;
 	esac
 done
@@ -147,6 +150,7 @@ echo -e "${GR}------------------------------------------------"
 echo 
 echo " Run apt-get: " $run_apt
 echo " Install Naviserver: " $install_ns
+echo " Naviserver Build: " $ns_build
 echo " Install StartUp Scripts: " $install_start
 echo " Install NS Module: " 
 echo " Naviserver dir: " $ns_dir
