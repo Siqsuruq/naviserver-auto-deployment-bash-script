@@ -1,6 +1,6 @@
 # naviserver-auto-deployment-bash-script
 This is simple naviserver auto deployment bash script for Ubuntu.
-I have tested it on Ubuntu 18.xx , but it should work on other systems as well.
+I have tested it on Ubuntu 18.xx, 20.xx , but it should work on other systems as well.
 
 Bascic usage as root, from terminal:
 ```

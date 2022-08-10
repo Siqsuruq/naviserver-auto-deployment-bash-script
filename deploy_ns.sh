@@ -14,13 +14,13 @@ install_start=no
 pg_incl=/usr/include/postgresql
 pg_lib=/usr/lib
 ns_module=""
-ns_build=master
+ns_build=main
 
 declare -A ns_modules
-ns_modules[NS_DBPG]=https://bitbucket.org/naviserver/nsdbpg/get/master.zip
-ns_modules[NS_DBI]=https://bitbucket.org/naviserver/nsdbi/get/master.zip
-ns_modules[NS_DBIPG]=https://bitbucket.org/naviserver/nsdbipg/get/master.zip
-ns_modules[NS_FORTUNE]=https://bitbucket.org/naviserver/nsfortune/get/master.zip
+ns_modules[NS_DBPG]=https://bitbucket.org/naviserver/nsdbpg/get/main.zip
+ns_modules[NS_DBI]=https://bitbucket.org/naviserver/nsdbi/get/main.zip
+ns_modules[NS_DBIPG]=https://bitbucket.org/naviserver/nsdbipg/get/main.zip
+ns_modules[NS_FORTUNE]=https://bitbucket.org/naviserver/nsfortune/get/main.zip
 
 # Usage info
 function show_help()
