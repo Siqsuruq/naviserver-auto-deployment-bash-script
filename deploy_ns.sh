@@ -17,10 +17,18 @@ ns_module=""
 ns_build=main
 
 declare -A ns_modules
-ns_modules[NS_DBPG]=https://bitbucket.org/naviserver/nsdbpg/get/main.zip
-ns_modules[NS_DBI]=https://bitbucket.org/naviserver/nsdbi/get/main.zip
-ns_modules[NS_DBIPG]=https://bitbucket.org/naviserver/nsdbipg/get/main.zip
-ns_modules[NS_FORTUNE]=https://bitbucket.org/naviserver/nsfortune/get/main.zip
+# ns_modules[NS_DBPG]=https://bitbucket.org/naviserver/nsdbpg/get/main.zip
+ns_modules[NS_DBPG]=https://github.com/naviserver-project/nsdbpg/archive/refs/heads/main.zip
+
+# ns_modules[NS_DBI]=https://bitbucket.org/naviserver/nsdbi/get/main.zip
+ns_modules[NS_DBI]=https://github.com/naviserver-project/nsdbi/archive/refs/heads/main.zip
+
+# ns_modules[NS_DBIPG]=https://bitbucket.org/naviserver/nsdbipg/get/main.zip
+ns_modules[NS_DBIPG]=https://github.com/naviserver-project/nsdbipg/archive/refs/heads/main.zip
+
+
+# ns_modules[NS_FORTUNE]=https://bitbucket.org/naviserver/nsfortune/get/main.zip
+ns_modules[NS_FORTUNE]=https://github.com/naviserver-project/nsfortune/archive/refs/heads/main.zip
 
 # Usage info
 function show_help()
@@ -94,8 +102,8 @@ function install_ns () {
 	echo -e "${RED} ------------------ Installing Naviserver: ------------------ ${NC}"
 	mkdir ns_install
 	cd ns_install
-	wget https://bitbucket.org/naviserver/naviserver/get/$ns_build.zip
-	unzip *zip
+	# wget https://bitbucket.org/naviserver/naviserver/get/$ns_build.zip
+	wget https://github.com/naviserver-project/naviserver/archive/refs/heads/main.zip
 	cd naviserver-naviserver*
 	./autogen.sh --prefix=$ns_dir --enable-symbols --enable-threads --htmldir=$ns_dir/doc
 	make
